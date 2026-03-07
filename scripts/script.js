@@ -5,6 +5,11 @@ const loadIssue = () =>{
     .then(data => displayIssues(data.data))
 }
 
+const createBadges = (arr) =>{
+    const badge = arr.map(el => `<div class="badge border-yellow-500 badge-soft badge-warning">${el}</div>`);
+    return badge.join(' ')
+}
+
 const displayIssues =(issues)=>{
     const issueContainer = document.getElementById('issue-container');
     issueContainer.innerHTML ='';
@@ -13,15 +18,22 @@ const displayIssues =(issues)=>{
         const issueCard = document.createElement('div');
         issueCard.innerHTML =`
         <div class="py-4 rounded-lg space-y-2 h-full shadow-sm bg-base-100">
+        <div class='flex justify-between'>
+        <img src='./assets/Open-Status'/>
+        <div class="badge border-yellow-500 badge-soft badge-warning">${issue.priority}</div>
+        </div>
         <h2 class="px-4 text-2xl font-semibold">${issue.title}</h2>
         <p class="px-4">${issue.description}</p>
         <div class="flex gap-1 px-4">
-            <div class="badge border-red-400 badge-soft badge-error">Bug</div>
-            <div class="badge border-yellow-500 badge-soft badge-warning">Help Wanted</div>
+            ${createBadges(issue.labels)}
         </div>
         <hr class="my-4 text-gray-500 w-full">
+          
+          <div>
             <p class="px-4 text-gray-400">${issue.author}</p>
-            <p class="px-4 text-gray-400">${Date(issue.createdAt)} </p>
+            <p class="px-4 text-gray-400">${new Date(issue.createdAt).toISOString().split('T')[0]} </p>
+            </div>
+          
     </div>
         `
     issueContainer.append(issueCard)
