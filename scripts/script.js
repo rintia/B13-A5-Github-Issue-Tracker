@@ -94,6 +94,7 @@ const searchIssues =()=>{
 
 const loadCategory=(id)=>{
     const btnSelected = document.getElementById(id).innerText;
+    const issueNumber = document.getElementById('issue-number')
     
 
      url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
@@ -103,14 +104,17 @@ const loadCategory=(id)=>{
         const allIssues = data.data;
 
         if(btnSelected === 'All'){
+            issueNumber.innerText= allIssues.length;
             displayIssues(allIssues)
         }
         else if(btnSelected === 'Open'){
           const openIssues =  allIssues.filter(issue => issue.status == 'open')
+          issueNumber.innerText = openIssues.length
           displayIssues(openIssues)
         }
         else if(btnSelected === 'Closed'){
           const closedIssues =  allIssues.filter(issue => issue.status == 'closed')
+          issueNumber.innerText = closedIssues.length;
           displayIssues(closedIssues)
         }
     })
