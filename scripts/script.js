@@ -1,4 +1,5 @@
 const loadIssue = () =>{
+    manageSpinner(true)
     url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
     fetch(url)
     .then(res => res.json())
@@ -39,6 +40,19 @@ const loadSingleIssue = async(id)=>{
 
 }
 
+const manageSpinner = (status) =>{
+    const spinner = document.getElementById('spinner')
+    const issueContainer = document.getElementById('issue-container')
+
+    if(status == true){
+        spinner.classList.remove('hidden')
+        issueContainer.classList.add('hidden')
+    }else{
+        spinner.classList.add('hidden')
+        issueContainer.classList.remove('hidden')
+    }
+}
+
 
 
 const createBadges = (arr) =>{
@@ -49,6 +63,8 @@ const createBadges = (arr) =>{
 const displayIssues =(issues)=>{
     const issueContainer = document.getElementById('issue-container');
     issueContainer.innerHTML ='';
+    const issueNumber = document.getElementById('issue-number');
+    issueNumber.innerText = issues.length
 
     issues.forEach(issue => {
         const issueCard = document.createElement('div');
@@ -81,21 +97,33 @@ const displayIssues =(issues)=>{
     }
     issueContainer.append(issueCard)
     });
+    manageSpinner(false)
 }
 
 loadIssue();
 
 const searchIssues =()=>{
+    removeActive()
     const searchInput = document.getElementById('search-issue').value;
+    manageSpinner(true)
     fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${searchInput}`)
     .then(res=> res.json())
     .then(search => displayIssues(search.data))
 }
 
+const removeActive=()=>{
+    const allBtn =document.querySelectorAll('.category-btn');
+    console.log(allBtn);
+    allBtn.forEach(btn => btn.classList.remove('btn-primary'))
+}
+
 const loadCategory=(id)=>{
-    const btnSelected = document.getElementById(id).innerText;
-    const issueNumber = document.getElementById('issue-number')
+    const activeBtn = document.getElementById(id);
+    const btnSelected = activeBtn.innerText;
     
+    removeActive()
+    activeBtn.classList.add('btn-primary');
+    manageSpinner(true)
 
      url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
     fetch(url)
@@ -104,17 +132,16 @@ const loadCategory=(id)=>{
         const allIssues = data.data;
 
         if(btnSelected === 'All'){
-            issueNumber.innerText= allIssues.length;
             displayIssues(allIssues)
         }
         else if(btnSelected === 'Open'){
           const openIssues =  allIssues.filter(issue => issue.status == 'open')
-          issueNumber.innerText = openIssues.length
+          
           displayIssues(openIssues)
         }
         else if(btnSelected === 'Closed'){
           const closedIssues =  allIssues.filter(issue => issue.status == 'closed')
-          issueNumber.innerText = closedIssues.length;
+          
           displayIssues(closedIssues)
         }
     })

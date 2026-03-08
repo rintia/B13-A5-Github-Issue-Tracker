@@ -52,8 +52,8 @@
         <!-- Category Buttons -->
         <section class="flex gap-5 bg-base-100 my-10 px-4 py-6 rounded-md shadow-sm">
             <button id="all" onclick='loadCategory("all")' class="btn btn-primary category-btn">All</button>
-            <button id="open" onclick='loadCategory("open")' class="btn btn-primary category-btn">Open</button>
-            <button id="closed" onclick='loadCategory("closed")' class="btn btn-primary category-btn">Closed</button>
+            <button id="open" onclick='loadCategory("open")' class="btn  category-btn">Open</button>
+            <button id="closed" onclick='loadCategory("closed")' class="btn  category-btn">Closed</button>
         </section>
 
         <!-- Issue Section -->
@@ -78,8 +78,13 @@
             </div>
         </section>
 
+        <!-- Spinner -->
+        <section id="spinner" class="p-20 flex justify-center items-center hidden">
+         <span class="loading loading-spinner loading-xl"></span>
+
+        </section>
         <!-- Issue Cards-->
-        <section id="issue-container" class="grid  grid-cols-4 gap-4 pt-4">
+        <section id="issue-container" class="grid grid-cols-1  md:grid-cols-4 gap-4 pt-4">
             <!-- card-1 -->
 
 
