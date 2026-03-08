@@ -73,6 +73,12 @@ const displayIssues =(issues)=>{
           
     </div>
         `
+    if(issue.status == 'open'){
+        issueCard.classList.add('green-border')
+    }
+    else{
+        issueCard.classList.add('purple-border')
+    }
     issueContainer.append(issueCard)
     });
 }
