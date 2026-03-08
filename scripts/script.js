@@ -91,3 +91,28 @@ const searchIssues =()=>{
     .then(res=> res.json())
     .then(search => displayIssues(search.data))
 }
+
+const loadCategory=(id)=>{
+    const btnSelected = document.getElementById(id).innerText;
+    
+
+     url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
+    fetch(url)
+    .then(res => res.json())
+    .then(data =>{
+        const allIssues = data.data;
+
+        if(btnSelected === 'All'){
+            displayIssues(allIssues)
+        }
+        else if(btnSelected === 'Open'){
+          const openIssues =  allIssues.filter(issue => issue.status == 'open')
+          displayIssues(openIssues)
+        }
+        else if(btnSelected === 'Closed'){
+          const closedIssues =  allIssues.filter(issue => issue.status == 'closed')
+          displayIssues(closedIssues)
+        }
+    })
+    
+}
