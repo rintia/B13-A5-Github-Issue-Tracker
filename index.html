@@ -17,8 +17,38 @@
 </head>
 
 <body class="bg-base-200 min-h-screen">
+    <!-- login Form -->
+     <div id="login-page" class="w-full flex justify-center items-center">
+          <div class="card bg-base-100 w-full mt-20 max-w-sm shrink-0 shadow-2xl">
+      <div class="card-body">
+        <div class="text-center">
+            <img class="mx-auto" src="./assets/github-logo.png" alt="">
+            <h2 class="text-2xl font-bold">GitHub Issue Tracker</h2>
+            <p class="text-gray-700">Sign in to manage your issues</p>
+        </div>
+        <fieldset class="fieldset">
+          <label class="label">Username</label>
+          <input id="username" type="text" class="input" placeholder="username" />
+          <p class="text-blue-700">Default: admin</p>
+          <label class="label">Password</label>
+          <input id="password" type="password" class="input" placeholder="Password" />
+          <p class="text-blue-700">Default: admin123</p>
+          
+          <button onclick="login()" class="btn btn-primary mt-4">Login</button>
+             <div class="divider">OR</div>
+          <div class="text-center">
+            <h2 class="my-4">Demo Credentials:</h2>
+            <h2><span class='font-semibold'>Username:</span>admin</h2>
+            <h2><span class='font-semibold'>Password:</span>admin123</h2>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+     </div>
 
-    <header>
+<!-- main section -->
+    <section id='main-section' class="hidden">
+         <header>
         <!-- Navbar -->
         <nav class="">
             <div class="navbar bg-base-100 shadow-sm px-20">
@@ -107,6 +137,7 @@
             </div>
         </dialog>
     </main>
+    </section>
 
 
 

@@ -1,3 +1,20 @@
+const login =() =>{
+    const userName = document.getElementById('username').value
+    const password = document.getElementById('password').value
+
+    const loginPage = document.getElementById('login-page')
+    const mainSection = document.getElementById('main-section')
+
+    if(userName ==='admin' && password === 'admin123'){
+        loginPage.classList.add('hidden')
+        mainSection.classList.remove('hidden')
+    }else{
+        alert('invalid username or password')
+        return;
+    }
+}
+
+
 const loadIssue = () =>{
     manageSpinner(true)
     url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
