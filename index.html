@@ -9,8 +9,11 @@
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
+
 <body class="bg-base-200 min-h-screen">
 
     <header>
@@ -18,32 +21,27 @@
         <nav class="">
             <div class="navbar bg-base-100 shadow-sm px-20">
                 <div class="flex-1">
-                  <a class="btn btn-ghost text-xl">
-                    <img class="h-full" src="./assets/github-logo.png" alt="">
-                    <h2>GitHub Issue Tracker</h2>
-                  </a>
+                    <a class="btn btn-ghost text-xl">
+                        <img class="h-full" src="./assets/github-logo.png" alt="">
+                        <h2>GitHub Issue Tracker</h2>
+                    </a>
                 </div>
                 <div class="flex gap-2">
                     <label class="input">
                         <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                          <g
-                            stroke-linejoin="round"
-                            stroke-linecap="round"
-                            stroke-width="2.5"
-                            fill="none"
-                            stroke="currentColor"
-                          >
-                            <circle cx="11" cy="11" r="8"></circle>
-                            <path d="m21 21-4.3-4.3"></path>
-                          </g>
+                            <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
+                                stroke="currentColor">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </g>
                         </svg>
                         <input type="search" required placeholder="Search" />
-                      </label>
-                  <div class="flex">
-                    <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
-                  </div>
+                    </label>
+                    <div class="flex">
+                        <button class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+                    </div>
                 </div>
-              </div>
+            </div>
         </nav>
     </header>
 
@@ -62,25 +60,66 @@
         <section class="px-4 py-6 bg-base-100 border-gray-400 border-b-2">
             <div class="flex justify-between items-center">
                 <div class="flex items-center gap-2">
-                   <img src="./assets/Aperture.png" alt=""> 
+                    <img src="./assets/Aperture.png" alt="">
                     <div>
                         <h2 class="font-semibold text-2xl"><span>50</span> Issues</h2>
                         <p class="text-gray-600">Track and manage your project issues</p>
                     </div>
                 </div>
                 <div class="flex gap-4">
-                    <p class="flex gap-1 items-center "><i class="fa-solid fa-circle text-[#00A96E] text-[0.5rem] "></i> Open</p>
-                    <p class="flex gap-1 items-center "><i class="fa-solid fa-circle text-[#A855F7] text-[0.5rem] "></i> Closed</p>
-                    
+                    <p class="flex gap-1 items-center "><i class="fa-solid fa-circle text-[#00A96E] text-[0.5rem] "></i>
+                        Open</p>
+                    <p class="flex gap-1 items-center "><i class="fa-solid fa-circle text-[#A855F7] text-[0.5rem] "></i>
+                        Closed</p>
+
                 </div>
             </div>
         </section>
+
         <!-- Issue Cards-->
         <section id="issue-container" class="grid grid-cols-4 gap-4 pt-4">
             <!-- card-1 -->
-         
+
 
         </section>
+
+        <!-- Modal -->
+        <!-- Open the modal using ID.showModal() method -->
+        <button class="btn" onclick="my_modal_5.showModal()">open modal</button>
+        <dialog id="my_modal_5" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box p-5">
+                <div class="moda-container space-y-4">
+                    <h2 class="text-2xl font-bold">Fix Broken Images</h2>
+                    <div class="flex gap-4 text-sm">
+                        <div class="badge badge-success mr-4">Open</div>
+                        <ul class="list-disc flex gap-6">
+                            <li>Opened by Fahim Abdullah</li>
+                            <li>11/02/2025</li>
+                        </ul>
+                    </div>
+                    <div class="badge border-yellow-500 badge-soft badge-warning">Bug</div>
+                    <div class="badge border-yellow-500 badge-soft badge-warning">Help Wanted</div>
+                    <p>The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.</p>
+                    <div class="bg-base-200 p-4 flex justify-between">
+                        <div>
+                            <h4 class="text-gray-700">Asignee:</h4>
+                            <p class="font-semibold">Fahim Abdullah</p>
+                        </div>
+                        <div>
+                            <h4 class="text-gray-700">Priority:</h4>
+                            <div class="badge border-yellow-500 badge-soft badge-warning">High</div>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn btn-primary">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
 
 
