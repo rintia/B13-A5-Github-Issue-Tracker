@@ -18,7 +18,7 @@
 
 <body class="bg-base-200 min-h-screen">
     <!-- login Form -->
-     <div id="login-page" class="w-full flex justify-center items-center">
+     <div id="login-page" class="w-full flex justify-center items-center hidden">
           <div class="card bg-base-100 w-full mt-20 max-w-sm shrink-0 shadow-2xl">
       <div class="card-body">
         <div class="text-center">
@@ -47,18 +47,18 @@
      </div>
 
 <!-- main section -->
-    <section id='main-section' class="hidden">
+    <section id='main-section' class="">
          <header>
         <!-- Navbar -->
         <nav class="">
-            <div class="navbar bg-base-100 shadow-sm px-20">
+            <div class="navbar bg-base-100 shadow-sm md:px-20">
                 <div class="flex-1">
-                    <a class="btn btn-ghost text-xl">
-                        <img class="h-full" src="./assets/github-logo.png" alt="">
+                    <a class="btn btn-ghost md:text-xl">
+                        <img  class="h-full" src="./assets/github-logo.png" alt="">
                         <h2>GitHub Issue Tracker</h2>
                     </a>
                 </div>
-                <div class="flex gap-2">
+                <div class="md:flex md:gap-2">
                     <label class="input">
                         <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none"
@@ -70,7 +70,7 @@
                         <input id="search-issue" type="search" required placeholder="Search" />
                     </label>
                     <div class="flex">
-                        <button onclick="searchIssues()" class="btn btn-primary"><i class="fa-solid fa-plus"></i>New Issue</button>
+                        <button onclick="searchIssues()" class="btn btn-primary text-sm"><i class="fa-solid fa-plus"></i>New Issue</button>
                     </div>
                 </div>
             </div>

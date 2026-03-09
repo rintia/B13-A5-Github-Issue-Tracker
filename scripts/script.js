@@ -35,7 +35,7 @@ const loadSingleIssue = async(id)=>{
                     <div class="flex gap-4 text-sm">
                         <div class="badge badge-success mr-4">${issue.status}</div>
                         <ul class="list-disc flex gap-6">
-                            <li>Opened by ${issue.assignee}</li>
+                            <li>by ${issue.author}</li>
                             <li>${new Date(issue.updatedAt).toISOString().split('T')[0]}</li>
                         </ul>
                     </div>
@@ -87,22 +87,27 @@ const displayIssues =(issues)=>{
         const issueCard = document.createElement('div');
         issueCard.innerHTML =`
         <div onclick="loadSingleIssue(${issue.id})" class="py-4 hover:cursor-pointer rounded-lg space-y-2 h-full shadow-sm bg-base-100">
+       <div class= 'h-2/3'>
         <div class='flex justify-between px-4'>
         <div>${issue.status == 'open' ? `<img src='./assets/Open-Status.png'/>` : `<img src="./assets/Closed- Status .png" alt="">` }</div>
+        ${issue.priority == 'high' ? `<div class="badge border-red-500 badge-soft badge-error">${issue.priority}</div>` : issue.priority == 'medium'? `<div class="badge border-yellow-500 badge-soft badge-warning">${issue.priority}</div>` : `<div class="badge border-gray-500 badge-soft badge-accent">${issue.priority}</div>`}
         
-        <div class="badge border-yellow-500 badge-soft badge-warning">${issue.priority}</div>
+        
         </div>
-        <h2 class="px-4 text-2xl font-semibold">${issue.title}</h2>
-        <p class="px-4">${issue.description}</p>
+        <h2 class="px-4 text-xl font-semibold">${issue.title}</h2>
+        <p class="px-4 line-clamp-3">${issue.description}</p>
         <div class="flex gap-1 px-4">
             ${createBadges(issue.labels)}
         </div>
+       </div>
+       <div class= ''>
         <hr class="my-4 text-gray-500 w-full">
           
-          <div>
+          <div class=''>
             <p class="px-4 text-gray-400">${issue.author}</p>
             <p class="px-4 text-gray-400">${new Date(issue.createdAt).toISOString().split('T')[0]} </p>
             </div>
+       </div>
           
     </div>
         `
